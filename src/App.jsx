@@ -1,8 +1,22 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import PokemonCard from "./components/PokemonCard";
+import Button from "./components/NavBar";
+
+function App() {
+  const [pokemonIndex, setPokemonIndex] = useState(0);
+
+  return (
+    <>
+      <PokemonCard pokemon={pokemonList[pokemonIndex]} />
+      <Button
+        pokemonIndex={pokemonIndex}
+        setPokemonIndex={setPokemonIndex}
+        pokemonLength={pokemonList.length - 1}
+      />
+    </>
+  );
+}
 
 const pokemonList = [
   {
@@ -29,33 +43,5 @@ const pokemonList = [
     name: "mew",
   },
 ];
-
-function App() {
-  const [pokemonIndex, setPokemonIndex] = useState(0);
-  const handleClickUp = () => {
-    setPokemonIndex(pokemonIndex + 1);
-  };
-  const handleClickDown = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
-
-  return (
-    <>
-      <div>
-        <PokemonCard pokemon={pokemonList[pokemonIndex]} />
-      </div>
-      {pokemonIndex > 0 ? (
-        <button onClick={handleClickDown}>précedent</button>
-      ) : (
-        ""
-      )}
-      {pokemonIndex < pokemonList.length - 1 ? (
-        <button onClick={handleClickUp}>suivant</button>
-      ) : (
-        ""
-      )}
-    </>
-  );
-}
 
 export default App;
