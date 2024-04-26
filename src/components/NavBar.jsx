@@ -1,26 +1,30 @@
-function Button({ pokemonIndex, setPokemonIndex, pokemonLength }) {
-  const handleClickDown = () => {
-    setPokemonIndex(pokemonIndex - 1);
-  };
-
-  const handleClickUp = () => {
-    setPokemonIndex(pokemonIndex + 1);
+function Button({ setPokemonIndex, pokemonList }) {
+  const handleClick = (pokemonIndex) => {
+    setPokemonIndex(pokemonIndex);
   };
 
   return (
     <div>
-      {pokemonIndex > 0 ? (
-        <button onClick={handleClickDown}>précedent</button>
-      ) : (
-        ""
-      )}
-      {pokemonIndex < pokemonLength ? (
-        <button onClick={handleClickUp}>Suivant</button>
-      ) : (
-        ""
-      )}
+      {pokemonList.map((pokemon, index) => {
+        return (
+          <button key={pokemon.name} onClick={() => handleClick(index)}>
+            {pokemon.name}
+          </button>
+        );
+      })}
     </div>
   );
 }
 
 export default Button;
+
+/*{pokemonIndex > 0 ? (
+  <button onClick={handleClickDown}>précedent</button>
+) : (
+  ""
+)}
+{pokemonIndex < pokemonLength ? (
+  <button onClick={handleClickUp}>Suivant</button>
+) : (
+  ""
+)} */

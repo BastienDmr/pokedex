@@ -13,6 +13,7 @@ function App() {
         pokemonIndex={pokemonIndex}
         setPokemonIndex={setPokemonIndex}
         pokemonLength={pokemonList.length - 1}
+        pokemonList={pokemonList}
       />
     </>
   );
